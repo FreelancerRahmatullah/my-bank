@@ -1,0 +1,30 @@
+body{
+    padding: 100px;
+}
+.submit-aria{
+    margin-top: 50px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgb(100, 100, 133);
+    
+}
+#transaction-aria{
+    display: none;
+}
+
+.statas{
+    border-radius: 10px;
+    color: white;
+    padding: 20px;
+}
+.diposit{
+    background-color: slateblue;
+}
+
+.withdraw{
+
+    background-color: lightsalmon;
+}
+.balance{
+    background-color: orange;
+}
