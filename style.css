@@ -12,12 +12,12 @@ body{
     display: none;
 }
 
-.statas{
+.status{
     border-radius: 10px;
     color: white;
     padding: 20px;
 }
-.diposit{
+.deposit{
     background-color: slateblue;
 }
 

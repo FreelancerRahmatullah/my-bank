@@ -24,44 +24,45 @@
     <div id="transaction-aria">
         <div class="row">
             <div class="col-md-4">
-                <div class="diposit statas">
-                    <h5>Diposit</h5>
-                    <h2>$00</h2>
+                <div class="deposit status">
+                    <h5>Deposit</h5>
+                    <h2>$ <span id="currentDeposit">00</span> </h2>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="withdraw statas">
+                <div class="withdraw status">
                     <h5>Withdraw</h5>
                     <h2>$00</h2>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="balance statas">
+                <div class="balance status">
                     <h5>Balance</h5>
-                    <h2>$1000</h2>
+                    <h2>$ <span id="currentBalance">500</span></h2>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="submit-aria">
-                    <h4>Diposit</h4>
-                    <input type="text" class="form-control" placeholder="$ amount you want to diposit">
+                    <h4>Deposit</h4>
+                    <input id="depositAmount" type="text" class="form-control" placeholder="$ amount you want to deposit">
                     <br>
-                    <button class="btn btn-success">Diposit</button>
+                    <button id="addDeposit" class="btn btn-success">Deposit</button>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="submit-aria">
                     <h4>Withdraw</h4>
-                    <input type="text" class="form-control" placeholder="$ amount you want to withdraw">
+                    <input id="withdrawAmount" type="text" class="form-control" placeholder="$ amount you want to withdraw">
                     <br>
-                    <button class="btn btn-success">Withdraw</button>
+                    <button id="addWithdraw" class="btn btn-success">Withdraw</button>
                 </div>
             </div>
         </div>
     </div>
     <script>
+        // login button event handler
         const loginBtn = document.getElementById("login");
         loginBtn.addEventListener("click", function(){
             const loginAria = document.getElementById("login-aria");
@@ -69,6 +70,47 @@
             const transactionAria = document.getElementById("transaction-aria");
             transactionAria.style.display = "block";
         })
+
+        // deposit button event handler
+        const depositBtn = document.getElementById("addDeposit");
+        depositBtn.addEventListener("click", function(){
+            const depositNumber = getInputNumber("depositAmount");
+
+
+                updateSpanText("currentDeposit", depositNumber);
+                updateSpanText("currentBalance", depositNumber);
+
+           document.getElementById("depositAmount").value = "";
+        })
+
+
+
+
+        // withdraw button event handler
+        const withdrawBtn = document.getElementById("addWithdraw");
+        withdrawBtn.addEventListener("click", function(){
+            const withdrawNumber = getInputNumber("withdrawAmount");
+            console.log(withdrawNumber);
+            
+        })
+
+
+
+        function getInputNumber(id){
+            const amount = document.getElementById(id).value;
+            const amountNumber = parseFloat(amount); 
+            return amountNumber;
+        }
+
+
+
+        // function short code
+        function updateSpanText(id, depositNumber){
+            const current = document.getElementById(id).innerText;
+            const currentNumber = parseFloat(current);
+            const totalAmount = depositNumber + currentNumber;
+            document.getElementById(id).innerText = totalAmount;
+        }
     </script>
 </body>
 </html>
