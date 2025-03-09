@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+        
     <div id="login-aria">
          <h1 class="text-center">Welcome to My Bank</h1>
              <div class="submit-aria">
@@ -32,7 +32,7 @@
             <div class="col-md-4">
                 <div class="withdraw status">
                     <h5>Withdraw</h5>
-                    <h2>$00</h2>
+                    <h2>$ <span id="currentWithdraw">00</span></h2>
                 </div>
             </div>
             <div class="col-md-4">
@@ -61,6 +61,7 @@
             </div>
         </div>
     </div>
+
     <script>
         // login button event handler
         const loginBtn = document.getElementById("login");
@@ -84,31 +85,31 @@
         })
 
 
-
-
         // withdraw button event handler
-        const withdrawBtn = document.getElementById("addWithdraw");
-        withdrawBtn.addEventListener("click", function(){
-            const withdrawNumber = getInputNumber("withdrawAmount");
-            console.log(withdrawNumber);
-            
-        })
+            const withdrawBtn = document.getElementById("addWithdraw");
+            withdrawBtn.addEventListener("click", function(){
+               const withdrawNumber = getInputNumber("withdrawAmount");
+
+               updateSpanText("currentWithdraw", withdrawNumber);
+               updateSpanText("currentBalance", -1 * withdrawNumber);
+
+               document.getElementById("withdrawAmount").value = "";
+
+            })
 
 
 
-        function getInputNumber(id){
-            const amount = document.getElementById(id).value;
-            const amountNumber = parseFloat(amount); 
-            return amountNumber;
+            // function short code
+            function getInputNumber(id){
+                const amount = document.getElementById(id).value;
+                const amountNumber = parseFloat(amount);
+                return amountNumber;
+
         }
-
-
-
-        // function short code
-        function updateSpanText(id, depositNumber){
+        function updateSpanText(id, addedNumber){
             const current = document.getElementById(id).innerText;
             const currentNumber = parseFloat(current);
-            const totalAmount = depositNumber + currentNumber;
+            const totalAmount = addedNumber + currentNumber;
             document.getElementById(id).innerText = totalAmount;
         }
     </script>
